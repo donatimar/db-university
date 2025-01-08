@@ -7,7 +7,7 @@ SELECT `students`.`id` AS `student_id`,
        `degrees`.`name` AS `degree_name`
 FROM `university`.`students`
 INNER JOIN `university`.`degrees` ON `students`.`degree_id` = `degrees`.`id`
-WHERE `degrees`.`name` = 'Economia';
+WHERE `degrees`.`name` = 'Corso di Laurea in Economia';
 
 -- Selezionare tutti i Corsi di Laurea Magistrale del Dipartimento di Neuroscienze
 SELECT `degrees`.`id` AS `degree_id`,
@@ -15,7 +15,7 @@ SELECT `degrees`.`id` AS `degree_id`,
        `departments`.`name` AS `department_name`
 FROM `university`.`degrees`
 INNER JOIN `university`.`departments` ON `degrees`.`department_id` = `departments`.`id`
-WHERE `university`.`degrees`.`level` = 'Magistrale' AND `departments`.`name` = 'Neuroscienze';
+WHERE `university`.`degrees`.`level` = 'Magistrale' AND `departments`.`name` = 'Dipartimento di Neuroscienze';
 
 -- Selezionare tutti i corsi in cui insegna Fulvio Amato (id=44)
 SELECT `courses`.`id` AS `course_id`,
@@ -63,7 +63,7 @@ INNER JOIN `university`.`course_teacher` ON `teachers`.`id` = `course_teacher`.`
 INNER JOIN `university`.`courses` ON `course_teacher`.`course_id` = `courses`.`id`
 INNER JOIN `university`.`degrees` ON `degrees`.`id` = `courses`.`degree_id`
 INNER JOIN `university`.`departments` ON `departments`.`id` = `degrees`.`department_id`
-WHERE `departments`.`name` = 'Matematica'
+WHERE `departments`.`name` = 'Dipartimento di Matematica'
 GROUP BY `teachers`.`id`;
 
 -- BONUS: Selezionare per ogni studente il numero di tentativi sostenuti per ogni esame, stampando anche il voto massimo. Successivamente, filtrare i tentativi con voto minimo 18.
